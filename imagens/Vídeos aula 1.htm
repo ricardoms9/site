@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+<meta name="theme-color" content="#222222">
+<meta name="msapplication-navbutton-color" content="#222222">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="#222222">
+<link href="/player/Assets/Images/favicon.ico" rel="icon" type="image/ico">
+<link href="/player/Assets/Images/favicon.ico" rel="apple-touch-icon image_src">
+<link href="/player/Assets/Images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/player/Assets/Scripts/plugins-avancado.min.js?nocache=[20170510040528]" rel="prefetch" type="text/javascript">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    
+
+    <title>Portal Tv Web</title>
+
+    <link href="/player/Assets/Styles/plugins.min.css?nocache=[20170510040528]" rel="stylesheet" />
+    <link href="/player/Assets/Styles/template.min.css?nocache=[20170510040528]" rel="stylesheet" />
+    
+    <link href="//amp.azure.net/libs/amp/2.3.3/skins/amp-default/azuremediaplayer.min.css?nocache=[20170510040528]" rel="stylesheet" />
+    <link href="/player/Assets/Styles/views/home-index.min.css?nocache=[20170510040528]" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/player/Assets/Scripts/html5shiv.min.js?nocache=[20170510040528]"></script>
+    <script src="/player/Assets/Scripts/respond.min.js?nocache=[20170510040528]"></script>
+    <![endif]-->
+</head>
+<body class="cores-default">
+    <div id="body">
+        
+
+
+<style>
+    .arrowThis {
+        padding: 30px !important;
+    }
+    .amp-default-skin .vjs-big-play-button::before{
+      font-size: .1px !important;  
+              background: transparent !important;
+        width: 0!important; 
+        height: 0!important; 
+        border: 0 !important;
+        border-top: 15px solid transparent!important;
+        border-bottom: 15px solid transparent!important;
+        border-left: 22px  solid white!important;
+    }
+
+    .full-loader{   
+    
+    background: rgba(0,0,0,0.5); 
+    position: fixed; 
+    width: 100%; 
+    height: 100%; 
+    top:0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    z-index: 10000; 
+    text-align: center; 
+    background-image: url("./Assets/Images/loader-play5.png"); 
+    background-repeat: no-repeat; 
+    background-position: center center; 
+    }
+    
+    .container-iframe {
+        height: 340px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+        .container-iframe iframe {
+            height: 100%;
+            width: 100%;
+        }
+
+        .container-iframe .ios {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch !important;
+            height: 100%;
+            width: 100px;
+        }
+
+            .container-iframe .ios iframe {
+                height: 100%;
+                min-width: 100%;
+                width: 100px;
+                *width: 100%;
+            }
+</style>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <a href="#" class="text-center logo-topo cab-logo"></a>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="menu">
+        <ul>
+            <li class="action1">
+                <a href="#"><i class="fas fa-retweet"></i></a>
+            </li>
+        </ul>
+    </div><!-- end-menu-rigth-border-margin -->
+</div>
+
+
+
+
+
+<div class="container">
+    <section class="row case-sup selectpicker" data-style="btn-primary">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  video-change" id="video-azure" style="display: none;">
+            <video  id="azuremediaplayer" webkit-playsinline="true" playsinline="true" class="azuremediaplayer amp-default-skin amp-big-play-centered" tabindex="0"></video>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <div class="container-iframe conteudo-change" style="display: none;">
+                <iframe src="" allowfullscreen></iframe>
+            </div>
+
+            <div class="conteudo-change">
+                <img src="" />
+            </div>
+
+        </div>
+
+    </section>
+</div>
+<br />
+<br />
+<div class="container-fluid bgGroup">
+    <div class="container">
+        <section class="row">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="slide-aba active">
+                    <a href="#tab-slide" aria-controls="tab-slide" role="tab" data-toggle="tab"><i class="fas fa-film"></i> Slides</a>
+                </li>
+                <li role="presentation" class="legenda-aba">
+                    <a href="#tab-legenda" aria-controls="tab-legenda" role="tab" data-toggle="tab"><i class="fas fa-indent"></i> Legenda</a>
+                </li>
+                <li role="presentation" class="buscar-aba">
+                    <form>
+                        <div class="input-group buscar-vid">
+                            <input type="text" class="form-control" placeholder="Buscar no vídeo ...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" href="#tab-busca" aria-controls="tab-busca" role="tab" data-toggle="tab" type="submit"><i class="fas fa-search"></i></button>
+                            </span>
+                        </div><!-- /input-group -->
+                    </form>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!-- conteudo de Legendas -->
+                <div role="tabpanel" class="tab-pane" id="tab-legenda">
+                    <select class="form-control select-header"></select>
+
+                    <section class="row">
+                        <div class="col-sm-12">
+                            <div id="legenda">
+                                <div class="legenda-separador" style="display: block;
+                                                                        position: absolute;
+                                                                        background-color: black;
+                                                                        height: 45px;
+                                                                        opacity: .1;
+                                                                        filter: alpha(opacity=40);
+                                                                        width: 100%;
+                                                                        margin-left: -23px;
+                                                                        margin-top: -40px;">&emsp;</div>
+                                <div id="" class="ttml-item ttml-item-active" idioma-legenda="" url-legenda="">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+                <!-- conteudo de Busca -->
+                <div role="tabpanel" class="tab-pane" id="tab-busca">
+                    <div class="row recipiente" id="filtro">
+                        <div id="Model.Legenda.Idioma" class="ttml-item-busca">
+                            <div class="col-sm-12">
+                                <form action="Url.Action = Xml" method="post">
+                                    <input type="hidden" name="url" value="Model.Legenda.Url" />
+                                    <div class="input-group">
+                                        <input type="text" name="Texto" class="form-control change-search" value="Model.Texto" placeholder="Pesquisar neste vídeo...">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default sub-1" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="scroll-case col-sm-12">
+                                <p>Resultados <span class="badge">0</span></p>
+                                <div class="list-group ttml-item-search" idioma-filtro="Model.Legenda.Idioma" url-filtro="Model.Legenda.Url"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- conteudo de Slides -->
+                <div role="tabpanel" class="tab-pane active" id="tab-slide">
+                    <section class="row">
+                        <div class="col-sm-12">
+                            <div id="slide-bar" class="scroller">
+                                <div class="container-slide  " style="position: relative;"></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+        
+<footer class="text-center">     
+        <span>© Copyright 1999-2023 - TV Web - Todos os direitos reservados.</span>
+</footer>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+    
+    <script src="/player/Assets/Scripts/plugins.min.js?nocache=[20170510040528]"></script>
+    <script src="/player/Assets/Scripts/template.min.js?nocache=[20170510040528]"></script>
+    <script type="text/javascript">
+        window.applicationBaseUrl = "/player/";
+        $('body').attr('baseURL',window.applicationBaseUrl)
+    </script>
+    
+    <script src="//amp.azure.net/libs/amp/2.3.3/azuremediaplayer.min.js?nocache=[20170510040528]"></script>
+    <script src="/player/Assets/Scripts/plugins-avancado.min.js?nocache=[20170510040528]"></script>
+    <script src="/player/Assets/Scripts/views/transmissao/index.min.js?nocache=[20170510040528]"></script>
+    <!-- Google Tag Manager UNIP Presencial -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-PWP7NP"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+	        new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PWP7NP');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <script>
+
+    var wrapper = $('.container-iframe');
+
+    if(navigator.userAgent.match(/(iPod|iPhone|iPad)/)){
+        wrapper.addClass('ios');
+        wrapper.css('overflow-y', 'scroll');
+        var scrolling = 'no';
+    }else{
+        var scrolling = 'yes';
+    }
+    </script>
+
+</body>
+</html>
